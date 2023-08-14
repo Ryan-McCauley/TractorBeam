@@ -1,0 +1,55 @@
+/* Universal Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Styles */
+body {
+    background: #03060c; /* Dark cosmic void */
+    color: #ddd; /* Stellar light */
+    font-family: 'Megrim', sans-serif; /* Unified cosmic font */
+    line-height: 1.6;
+    padding: 2em 10%;
+}
+
+/* Text Elements */
+p {
+    background: rgba(0, 0, 0, 0.3); /* Nebula mist */
+    border-left: 4px solid #0fff6b; /* Alien tech glow */
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    position: relative;
+    transition: transform 0.3s ease; /* For that space warp effect */
+    animation: fadeIn 0.6s forwards; /* Starship entry */
+    opacity: 0; /* Begin in stealth mode, then reveal */
+}
+
+p:hover {
+    transform: scale(1.03); /* Activate hover zoom drive */
+}
+
+/* Links are the wormholes of the web */
+a {
+    font-family: 'Megrim', sans-serif; /* Unified cosmic font */
+    color: #655bc1; /* Wormhole shade */
+    font-size: 15px;
+}
+
+/* Starship Entry Sequence - Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Descend from the ether */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Landing position */
+    }
+}
+
+/* Coordinate staggered starship arrivals */
+p:nth-child(1) { animation-delay: 0.2s; }
+p:nth-child(2) { animation-delay: 0.4s; }
+p:nth-child(3) { animation-delay: 0.6s; }

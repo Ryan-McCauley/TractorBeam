@@ -1,0 +1,22 @@
+# IDEs and editors
+/.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# Custom directories to ignore
+detected_changes/
+analysis/
+json_data/
+master_list/
+page_source/

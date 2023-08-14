@@ -1,0 +1,30 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    awesome_print (1.9.2)
+    fileutils (1.7.1)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    json (2.6.3)
+    mini_mime (1.1.5)
+    multi_xml (0.6.0)
+    nokogiri (1.15.3-x86_64-darwin)
+      racc (~> 1.4)
+    racc (1.7.1)
+
+PLATFORMS
+  x86_64-darwin-21
+
+DEPENDENCIES
+  awesome_print
+  fileutils
+  httparty
+  json
+  nokogiri
+
+RUBY VERSION
+   ruby 3.2.2p53
+
+BUNDLED WITH
+   2.4.10
