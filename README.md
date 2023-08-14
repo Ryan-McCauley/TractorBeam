@@ -27,13 +27,16 @@ High level explaination of the file structure.
 
 
 
-execute.rb
+`execute.rb`
   The main script for this app.  Running this script will run all included tinhat branches sequentially in an infinite loop, scraping data into the host folders.
 
-sniff.rb
+`sniff.rb`
   This file will run a script that goes through all files in the `master_list` directory and outputs a new html page for operator analysis.  I've included a sci-fi themed `styles.css`
   to add just a little flair for the end effect.  The output file will show the links sorted by the number of times they appear across each unique sweep.  Clicking on the top links
   which have the lowest count will show the links most likely to have been removed as they will not show up in later scans.
+
+`ping.py`
+  This script will go through a list of all collected urls and see if they return a 200 status.  This tool runs in the console and does not generate an output file.
 
 
 
