@@ -4,6 +4,18 @@ This collection of scripts was inspired after seeing several comments on social 
 As a hard skeptic of claims made on the internet, I set about to capture and log all the source file of each page across several pages that I would suspect would have deleted posts.
 All data is timestamped in the file names as they are created.
 
+Goals and Features of this tool:
+
+  -Continuous Data Collection
+    This application's goal is to continuously check for new posts and data without causing significant band width issues on either client or server side.  In feild testing, it has not yet been blocked as being a bot or scraper. The main `execute.rb` script is designed for continuous use and to only save the novel data apps files.  Over twenty days of actively running application across four URLs has yielded ~7gb of application data.
+
+  -Easy to read data
+    This app is designed to run in the background and to analyze all collected data when the operator is ready.  The `sniff.rb`, once ran will output a local `html` file with the time stamp in the analysis directory.  Each day of collected data will have it's own dropdown and will open a new tab to the current page
+    
+  -Recover what's deleted
+    Each time new data is detected, it will be saved.  If that data is later removed the operator can look up the deleted data as it was first indexed and saved by the TractorBeam application.
+
+
 
 
 High level explaination of the file structure.
