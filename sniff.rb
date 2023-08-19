@@ -25,7 +25,6 @@ def scan_directory(directory)
     result
   end
 
-  # Group by URLs and associate each URL with its earliest timestamp
   link_counts = link_timestamps.group_by { |(url, _)| url }
                                .transform_values do |timestamps|
                                  count = timestamps.size
@@ -50,24 +49,24 @@ end
 def save_to_file(url_counts, file_path = "analysis/#{Time.now.strftime('%Y%m%d%H%M%S')}_url_counts.html")
   ap "Saving to file: #{file_path}"
 
-  # Sort by count (ascending) and then by reverse timestamp (descending)
-  sorted_url_counts = url_counts.sort_by { |_url, (count, timestamp)| [count, -timestamp.to_i] }
+  # Group by days
+  grouped_by_day = url_counts.group_by { |_, (_, timestamp)| timestamp[0..7] }
 
   builder = Nokogiri::HTML::Builder.new do |doc|
     doc.html {
       doc.head {
-        # Link to the local stylesheet here
-        
         doc.link(:rel => "stylesheet", :href => "https://fonts.googleapis.com/css2?family=Megrim&display=swap", :type => "text/css")
         doc.link(:rel => "stylesheet", :href => "../styles.css", :type => "text/css")
       }
       doc.body {
-        sorted_url_counts.each { |url, (count, timestamp)| 
-          doc.p {
-            doc.text " - Count: #{count} - First Appeared: #{format_timestamp(timestamp)}"
-            doc.a(url, :href => url)
+        grouped_by_day.each do |day, day_url_counts|
+          doc.label("Links from #{day}")
+          doc.select(:onchange => "window.open(this.value,'_blank')") {  # Added JavaScript to handle dropdown selection
+            day_url_counts.sort_by { |_url, (count, timestamp)| [count, -timestamp.to_i] }.each do |url, (count, timestamp)|
+              doc.option("Count: #{count} - First Appeared: #{format_timestamp(timestamp)} - #{url}", :value => url)
+            end
           }
-        }
+        end
       }
     }
   end
@@ -76,7 +75,6 @@ def save_to_file(url_counts, file_path = "analysis/#{Time.now.strftime('%Y%m%d%H
     file.write(builder.to_html)
   end
 end
-
 
 
 to_sniff = ['./master_list/aliens', './master_list/strange_earth', './master_list/ufo', './master_list/ufob']
