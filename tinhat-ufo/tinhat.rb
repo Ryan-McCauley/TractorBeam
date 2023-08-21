@@ -1,9 +1,9 @@
 require 'awesome_print'
 
 # Script Location
-layer_1 = './tinhat-ufob/layer_1.rb'
-layer_2 = './tinhat-ufob/layer_2.py'
-layer_3 = './tinhat-ufob/judge.py'
+layer_1 = './tinhat-ufo/layer_1.rb'
+layer_2 = './tinhat-ufo/layer_2.py'
+layer_3 = './tinhat-ufo/judge.py'
 
 system('ruby', layer_1)
 puts "Script executed at: #{Time.now}"
