@@ -61,7 +61,7 @@ def save_to_file(url_counts, file_path = "analysis/#{Time.now.strftime('%Y%m%d%H
       doc.body {
         grouped_by_day.each do |day, day_url_counts|
           doc.label("Links from #{day}")
-          doc.select(:onchange => "window.open(this.value,'_blank')") {  # Added JavaScript to handle dropdown selection
+          doc.select(:onchange => "window.open(this.value,'_blank')") {  
             day_url_counts.sort_by { |_url, (count, timestamp)| [count, -timestamp.to_i] }.each do |url, (count, timestamp)|
               doc.option("Count: #{count} - First Appeared: #{format_timestamp(timestamp)} - #{url}", :value => url)
             end
@@ -74,7 +74,13 @@ def save_to_file(url_counts, file_path = "analysis/#{Time.now.strftime('%Y%m%d%H
   File.open(file_path, 'w') do |file|
     file.write(builder.to_html)
   end
+
+  # Open the saved file in the default browser
+  system("open '#{file_path}'") if RUBY_PLATFORM =~ /darwin/   # For macOS
+  system("xdg-open '#{file_path}'") if RUBY_PLATFORM =~ /linux/  # For Linux
+  system("start '#{file_path}'") if RUBY_PLATFORM =~ /mswin|mingw|cygwin/  # For Windows
 end
+
 
 
 to_sniff = ['./master_list/aliens', './master_list/strange_earth', './master_list/ufo', './master_list/ufob']
