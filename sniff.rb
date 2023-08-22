@@ -11,7 +11,7 @@ SUBREDDIT_COLORS = {
   'Aliens' => 'limegreen',     # An alien-like green color.
   'Ufo' => 'skyblue',         # UFOs in the sky.
   'Strange_earth' => 'purple',  # The mysteries of the Earth.
-  'Ufob' => 'goldenrod'    # Another UFO related color.
+  'Ufob' => 'goldenrod' ,   # Another UFO related color.
 }
 
 
@@ -116,13 +116,13 @@ def save_to_file(url_counts, file_path = "analysis/#{Time.now.strftime('%Y%m%d%H
             day_url_counts.sort_by { |_url, (count, timestamp)| [count, -timestamp.to_i] }.each do |url, (count, timestamp)|
               subreddit, title = extract_subreddit_and_title(url)
               display_text = if subreddit
-                "Count: #{count} #{subreddit}:: #{title}"
+                "Count: #{count} #{subreddit}:: #{title}" 
               else
                 "Count: #{count} - #{url}"  # Fallback to URL if parsing fails
               end
               
               option_color = SUBREDDIT_COLORS[subreddit] || 'gray'  # Default to gray if the subreddit isn't in our mapping
-              doc.option(display_text, :value => url, :data => {:subreddit => subreddit})
+              doc.option(display_text, :value => url, :data => {:subreddit => subreddit}, :class => "subreddit-#{subreddit}")
             end
           }
         end
