@@ -50,11 +50,29 @@ select {
     appearance: none; /* Remove default appearance */
     cursor: pointer; /* Galactic pointer */
     transition: transform 0.3s ease, background 0.3s ease; /* Control activation sequence */
+    animation: pulse 1.5s infinite; /* Green border pulsing */
 }
 
 select:hover {
     background: rgba(0, 0, 0, 0.8); /* Control panel hover effect */
     transform: scale(1.03); /* Activate hover zoom drive */
+}
+
+
+.subreddit-aliens {
+    color: #88ff00; /* Greenish for Aliens */
+}
+
+.subreddit-strange_earth {
+    color: #0088cc; /* Light blue for Strange Earth */
+}
+
+.subreddit-ufo {
+    color: #ff9a00; /* Amber for UFO */
+}
+
+.subreddit-ufob {
+    color: #50c878; /* Emerald for UFOB */
 }
 
 /* Starship Entry Sequence - Fade In */
@@ -69,7 +87,19 @@ select:hover {
     }
 }
 
+/* Green border pulsing */
+@keyframes pulse {
+    0% { border-color: #0fff6b; }
+    50% { border-color: #08b058; } /* Mid color */
+    100% { border-color: #0fff6b; }
+}
+
 /* Coordinate staggered starship arrivals */
 p:nth-child(1) { animation-delay: 0.2s; }
 p:nth-child(2) { animation-delay: 0.4s; }
 p:nth-child(3) { animation-delay: 0.6s; }
+
+/* Staggered pulse animation for dropdowns */
+select:nth-child(1) { animation-delay: 0.3s; }
+select:nth-child(2) { animation-delay: 0.6s; }
+select:nth-child(3) { animation-delay: 0.9s; }
