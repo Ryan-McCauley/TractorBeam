@@ -1,0 +1,26 @@
+GEM
+  specs:
+    awesome_print (1.9.2)
+    fileutils (1.6.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    json (2.6.1)
+    mini_mime (1.1.5)
+    multi_xml (0.6.0)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
+    racc (1.7.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  awesome_print
+  fileutils
+  httparty
+  json
+  nokogiri
+
+BUNDLED WITH
+   2.3.26
